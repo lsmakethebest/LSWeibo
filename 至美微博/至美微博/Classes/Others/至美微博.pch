@@ -1,0 +1,69 @@
+//
+//  至美微博.pch
+//  至美微博
+//
+//  Created by ls on 15/10/4.
+//  Copyright © 2015年 ls. All rights reserved.
+//
+
+
+#ifdef __OBJC__
+
+#import "UIView+Frame.h"
+#import "UIImage+Image.h"
+#import "NSString+Size.h"
+#import "NSString+Time.h"
+#define LSKeyWindow [UIApplication sharedApplication].keyWindow
+#define LSTitleFont [UIFont systemFontOfSize:14]
+#define LSCellMargin 10
+#define LSMicroMargin 5
+#define LSNameFont [UIFont systemFontOfSize:14]
+#define LSTimeFont [UIFont systemFontOfSize:12]
+#define LSSourceFont [UIFont systemFontOfSize:12]
+#define LSTextFont [UIFont systemFontOfSize:14]
+#define LSScreenWidth [UIScreen mainScreen].bounds.size.width
+#define LSScreenHeight [UIScreen mainScreen].bounds.size.height
+//转发微博toolbar的高度
+#define LSReteetToolbarHeight 20
+#define LSReteetToolbarFont [UIFont systemFontOfSize:11]
+
+// 颜色
+#define LSColor(r, g, b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0]
+
+// 随机色
+#define LSRandomColor LSColor(arc4random_uniform(256), arc4random_uniform(256), arc4random_uniform(256))
+//超链接颜色
+#define LSHighTextColor LSColor(88, 161, 253)
+#define LSGlobalColor LSColor(232, 232, 232)
+//连接key
+#define LSHighLink @"LSHighLink"
+
+//表情键盘
+#define LSEmotionPerColMaxCount 7
+#define LSEmotionPerRolMaxCount 3
+#define LSEmotionPerMaxCount ((LSEmotionPerRolMaxCount)*(LSEmotionPerColMaxCount)-1)
+
+//表情通知
+#define LSEmotionSelectedEmotionNotification @"LSEmotionSelectedEmotionNotification"
+#define LSEmotionDeletedEmotionNotification @"LSEmotionDeletedEmotionNotification"
+
+//选中链接通知
+#define LSSelectedLink @"LSSelectedLink"
+//key
+#define LSSelectedLinkKey @"LSSelectedLinkKey"
+//取出表情的key
+#define LSSelectedEmotion @"LSSelectedEmotion"
+
+// ...表示宏定义的可变参数
+// __VA_ARGS__:表示函数里面的可变参数
+#ifdef DEBUG // 调试
+
+#define LSLog(...) NSLog(__VA_ARGS__)
+
+#else // 发布
+
+#define LSLog(...)
+
+#endif
+
+#endif

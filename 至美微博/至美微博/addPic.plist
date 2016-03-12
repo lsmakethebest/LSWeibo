@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<string>tabbar_compose_idea</string>
+	<string>tabbar_compose_photo</string>
+	<string>tabbar_compose_camera</string>
+	<string>tabbar_compose_lbs</string>
+	<string>tabbar_compose_review</string>
+	<string>tabbar_compose_more</string>
+	<string>tabbar_compose_friend</string>
+	<string>tabbar_compose_wbcamera</string>
+	<string>tabbar_compose_music</string>
+	<string>tabbar_compose_weibo</string>
+	<string>tabbar_compose_transfer</string>
+	<string>tabbar_compose_weibo</string>
+	<string>tabbar_compose_lbs</string>
+	<string>tabbar_compose_transfer</string>
+	<string>tabbar_compose_weibo</string>
+</array>
+</plist>
