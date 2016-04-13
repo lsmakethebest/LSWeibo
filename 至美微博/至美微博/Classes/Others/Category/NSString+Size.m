@@ -16,9 +16,9 @@
 {
     return [text sizeOfTextWithMaxSize:maxSize font:font];
 }
--(long long)fileSizeWithFilePath
+-(CGFloat)fileSizeWithFilePath
 {
-    long long totalSize=0;
+    CGFloat totalSize=0;
     NSFileManager *fileManger=[NSFileManager  defaultManager];
     //path为空
     if (self==nil) return totalSize;
@@ -36,11 +36,10 @@
             
         }
     }else {//是文件
-        NSDictionary *dict=[fileManger attributesOfItemAtPath:self error:NULL];
-        long long size=(long long)dict[NSFileSize];
-        totalSize+=size;
+        long long size=[fileManger attributesOfItemAtPath:self error:NULL].fileSize;
+        totalSize=size/1000.0/1000.0;
     }
-    return totalSize/1000.0/1000.0;
+    return totalSize;
 }
 
 @end

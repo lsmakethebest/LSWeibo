@@ -86,11 +86,6 @@
 
 
 
--(void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    self.navigationController.tabBarController.tabBar.hidden=NO;
-}
 - (IBAction)segmentClick:(UISegmentedControl*)sender {
     NSInteger  index= sender.selectedSegmentIndex;
     if (index==0) {

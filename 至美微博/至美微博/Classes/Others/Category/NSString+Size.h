@@ -14,6 +14,6 @@
 +(CGSize)sizeWithText:(NSString*)text maxSize:(CGSize)maxSize font:(UIFont*)font;
 
 //计算文件或目录大小
--(long long)fileSizeWithFilePath;
+-(CGFloat)fileSizeWithFilePath;
 
 @end

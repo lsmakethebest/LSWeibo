@@ -168,9 +168,10 @@
         self.sectionView.status=self.statusFrame.status;
         [self.myTableView reloadData];
         [self.myTableView footerEndRefreshing];
-        NSLog(@"获取评论成功");
+        NSLog(@"获取更多评论成功");
     } failure:^(NSError *error) {
-        NSLog(@"获取评论失败");
+        NSLog(@"获取更多评论失败");
+                [self.myTableView footerEndRefreshing];
         
     }];
     
@@ -371,7 +372,7 @@
     CGFloat h=44;
     LSToolBar *toolBar=[[LSToolBar alloc]initWithFrame:CGRectMake(0,  LSScreenHeight-h+2, LSScreenWidth, h)];
     toolBar.delegate=self;
-    [self.navigationController.view addSubview:toolBar];
+    [self.view addSubview:toolBar];
     self.toolBar=toolBar;
 }
 -(void)toolBar:(LSToolBar *)toolBar buttonType:(LSToolBarButtonType)type
@@ -411,10 +412,5 @@
 -(void)sendLike
 {
     
-}
--(void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    self.navigationController.tabBarController.tabBar.hidden=YES;
 }
 @end

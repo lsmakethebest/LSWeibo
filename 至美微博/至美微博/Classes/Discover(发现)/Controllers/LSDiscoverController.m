@@ -45,10 +45,5 @@
     return 0;
 }
 
--(void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-self.navigationController.tabBarController.tabBar.hidden=NO;
-}
 
 @end

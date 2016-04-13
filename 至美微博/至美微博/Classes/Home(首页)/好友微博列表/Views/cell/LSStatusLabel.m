@@ -102,6 +102,18 @@
         [self addSubview:bg];
     }
 }
+/**
+ 返回当前view所在的控制器
+ */
+- (UIViewController*) viewController
+{
+    for (UIResponder *res=self.nextResponder;res!=nil ;res=res.nextResponder) {
+        if ([res isKindOfClass:[UIViewController class]]) {
+            return (UIViewController*)res;
+        }
+    }
+    return nil;
+}
 -(LSLink*)touchLickWithPoint:(CGPoint)point
 {
     __block  LSLink *link=nil;
@@ -143,7 +155,15 @@
     CGPoint point = [touch locationInView:touch.view];
     LSLink *link=[self touchLickWithPoint:point];
     if (link) {
+            [self touchesCancelled:touches withEvent:event];
+        UIAlertController *alert=    [UIAlertController alertControllerWithTitle:@"提示" message:link.text preferredStyle:UIAlertControllerStyleAlert];
+        [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            
+        }]];
+        
+        [[self viewController] presentViewController:alert animated:YES completion:nil];
         [[NSNotificationCenter defaultCenter] postNotificationName:LSSelectedLink object:nil userInfo:@{LSSelectedLinkKey:link.text}];
+        return;
     }
     [self touchesCancelled:touches withEvent:event];
 }

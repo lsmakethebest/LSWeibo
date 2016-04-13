@@ -73,8 +73,8 @@ typedef enum {
     [self setupControllers];
 
     //注册修该number通知
-    //    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge categories:nil];
-    //    [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge categories:nil];
+        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
     //创建定时器定时获取未读数量
     NSTimer* timer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(getUnreadCount) userInfo:nil repeats:YES];
     [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
@@ -121,21 +121,22 @@ typedef enum {
 //加载所有控制器
 - (void)setupControllers
 {
+    //设置选中状态时字体颜色
+    NSDictionary* dict2 = @{ NSForegroundColorAttributeName : [UIColor orangeColor] };
+    //设置默认状态时字体颜色
+    NSDictionary* dict3 = @{ NSForegroundColorAttributeName : [UIColor whiteColor] };
+    
+    
     //首页
     LSHomeController* home = [[LSHomeController alloc] init];
     LSNavigationController* item1 = [[LSNavigationController alloc] initWithRootViewController:home];
-    //    item1.tabBarItem.selectedImage=[UIImage imageWithOriginalName:@"tabbar_home_selected"];
-    item1.tabBarItem.title = @"首页";
     item1.tabBarItem.image = [UIImage imageWithOriginalName:@"tabbar_home"];
-    self.home = item1;
     //解决图片被渲染成蓝色 这样会不被渲染
     item1.tabBarItem.selectedImage = [[UIImage imageNamed:@"tabbar_home_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    //设置选中状态时字体颜色
-    NSDictionary* dict2 = @{ NSForegroundColorAttributeName : [UIColor orangeColor] };
+    
     [item1.tabBarItem setTitleTextAttributes:dict2 forState:UIControlStateSelected];
-    //设置默认状态时字体颜色
-    NSDictionary* dict3 = @{ NSForegroundColorAttributeName : [UIColor whiteColor] };
-    [item1.tabBarItem setTitleTextAttributes:dict3 forState:UIControlStateNormal];
+    item1.tabBarItem.title = @"首页";
+    self.home = item1;
 
     //消息
     UIStoryboard* storyBoard = [UIStoryboard storyboardWithName:@"MessageAndFriend" bundle:nil];
@@ -145,6 +146,7 @@ typedef enum {
     [item2.tabBarItem setTitleTextAttributes:dict2 forState:UIControlStateSelected];
     item2.tabBarItem.title = @"消息";
     self.message = item2;
+    
 
     //    发现
     LSDiscoverController* discover = [[LSDiscoverController alloc] init];
@@ -155,6 +157,7 @@ typedef enum {
     item4.tabBarItem.title = @"发现";
 
     self.discover = item4;
+    
     //    我
     LSProfileController* profile = [[LSProfileController alloc] init];
     LSNavigationController* item5 = [[LSNavigationController alloc] initWithRootViewController:profile];

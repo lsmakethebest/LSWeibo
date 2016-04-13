@@ -70,6 +70,32 @@
     [self setupNavigationBar];
     //监控网络状态
     [self startMonitor];
+    
+    LSStatusFrame *tempStatusFrame=[self.statuses firstObject];
+    LSStatus *tempStatus=tempStatusFrame.status;
+    //    NSLog(@"idstr====%@",tempStatus.idstr);
+    
+    [LSStatusTool loadNewStatusWithSinceId:tempStatus.idstr maxId:nil success:^(NSArray *statuses) {
+        
+        NSMutableArray *statusF=[NSMutableArray array];
+        for (LSStatus* status in statuses) {
+            LSStatusFrame *statusFrame=[[LSStatusFrame alloc]init];
+            statusFrame.status=status;
+            [statusF addObject:statusFrame];
+        }
+        
+        [self.statuses insertObjects:statusF atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0,statusF.count) ]];
+        [self.tableView headerEndRefreshing];
+        [self.tableView reloadData];
+//        [self showNumber:statusF.count];
+        //        NSLog(@"statusFCOUNT==%d",statusF.count);
+        
+    } failure:^(NSError *error) {
+        [self.tableView headerEndRefreshing];
+        NSLog(@"加载新数据失败%@",error);
+    }];
+    
+    
 }
 -(void)selectedLink:(NSNotification*)note
 {
@@ -166,6 +192,8 @@
         
         [self.statuses insertObjects:statusF atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0,statusF.count) ]];
         [self.tableView headerEndRefreshing];
+        [UIApplication sharedApplication].applicationIconBadgeNumber=0;
+        self.navigationController.tabBarItem.badgeValue=  nil;
         [self.tableView reloadData];
         [self showNumber:statusF.count];
 //        NSLog(@"statusFCOUNT==%d",statusF.count);
@@ -225,10 +253,6 @@
             [statusF addObject:statusFrame];
         }
         [self.statuses addObjectsFromArray:statusF];
-        if (statusF.count) {
-            [UIApplication sharedApplication].applicationIconBadgeNumber=[UIApplication sharedApplication].applicationIconBadgeNumber-[self.navigationController.tabBarItem.badgeValue intValue];
-            self.navigationController.tabBarItem.badgeValue=  nil;
-        }
         [self.tableView reloadData];
         [self.tableView footerEndRefreshing];
     } failure:^(NSError *error) {
@@ -276,12 +300,6 @@
 {
     LSStatusFrame *statusFrame=self.statuses[indexPath.section];
     return statusFrame.cellHeight;
-}
-
--(void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    self.navigationController .tabBarController.tabBar.hidden=NO;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -364,7 +382,6 @@
 -(void)refresh
 {
     [self .tableView headerBeginRefreshing];
-    [self loadMoreStatus];
     //    if (self.statuses.count) {
     //
     //        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
