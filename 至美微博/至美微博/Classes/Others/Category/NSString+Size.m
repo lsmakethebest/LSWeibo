@@ -8,6 +8,7 @@
 
 
 @implementation NSString (Size)
+
 -(CGSize)sizeOfTextWithMaxSize:(CGSize)maxSize font:(UIFont*)font
 {
     return [self boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:font} context:nil].size;

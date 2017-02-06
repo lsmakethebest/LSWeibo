@@ -2716,7 +2716,8 @@
 				TargetAttributes = {
 					49167B1E1BC1C7B8008671FC = {
 						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = Q88VKXYHNH;
+						DevelopmentTeam = MVWK55S4CF;
+						ProvisioningStyle = Manual;
 					};
 					49167B371BC1C7B9008671FC = {
 						CreatedOnToolsVersion = 7.0;
@@ -3380,6 +3381,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = BrandAsset;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = MVWK55S4CF;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "至美微博/Classes/Others/至美微博.pch";
@@ -3387,9 +3389,10 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = perfectMicroBlogss;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kuaichengwuliu.perfectMicroBlogss;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "1c899346-5bbc-48d8-ad1b-d53a84a13bd5";
+				PROVISIONING_PROFILE_SPECIFIER = kcwl_allapp_2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -3401,6 +3404,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = BrandAsset;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "至美微博/Classes/Others/至美微博.pch";
@@ -3408,7 +3412,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = perfectMicroBlogss;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kuaichengwuliu.perfectMicroBlogss;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
